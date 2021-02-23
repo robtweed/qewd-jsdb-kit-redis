@@ -162,7 +162,7 @@ The first step is to create the (initially empty) DOM Document:
         var documentNode = doc.dom.createDocument()
 
 
-If you take a look in your Redis system using the *global_list* script, 
+If you take a look in your Redis system using the [*global_list*](./REPL.md#the-global_list-script) script, 
 you'll see that the following Global nodes have
 been created:
 
