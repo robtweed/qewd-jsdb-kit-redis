@@ -1,0 +1,11 @@
+{
+  "qewd_up": true,
+  "qewd": {
+    "port": 8080,
+    "poolSize": "2",
+    "managementPassword": "keepThisSecret!",
+    "database": {
+      "type": "redis"
+    }
+  }
+}
