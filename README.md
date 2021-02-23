@@ -467,9 +467,8 @@ that has also been automatically installed in your QEWD system.
 - to find out more about how QEWD abstracts the Redis database as persistent 
 JSON objects, you can try out the 
 [QEWD-JSdb REPL-based tutorial](./REPL.md) after which you can also learn about
-the other NoSQL database models supported by QEWD-JSdb:
+the other NoSQL database models supported by QEWD-JSdb within Redis:
 
-- [Lists](./LISTS.md)
 - [Key/Object Store](./KVS.md)
 - [Persistent XML/JSON DOM](./DOM.md)
 

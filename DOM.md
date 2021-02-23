@@ -152,8 +152,13 @@ Next, enable it to behave as a *DOM*:
 
         doc.enable_dom()
 
-At this point, if you look in your Redis system using the *global_list* script, 
-you won't see a Global named *jsdbDom* yet.
+At this point, if you look in your Redis system using the [*global_list*](./REPL.md#the-global_list-script) script, 
+you won't see a Global named *jsdbDom* yet:
+
+        $ node global_list jsdbDom
+
+        No Global with a name of jsdbDom exists
+
 
 ## The documentNode
 
@@ -166,6 +171,7 @@ If you take a look in your Redis system using the [*global_list*](./REPL.md#the-
 you'll see that the following Global nodes have
 been created:
 
+        $ node global_list jsdbDom
         
         jsdbDom["demo","documentNode"]=1
         jsdbDom["demo","index","by_nodeName",9,"#document",1]=""
@@ -203,7 +209,7 @@ Let's see what they are for our *documentNode*:
 A DOM can, of course, only have one *documentNode*.
 
 If you look in the Redis Global that represents our DOM, you'll see how and where these
-properties are stored: use the *global_list* script.
+properties are stored: use the [*global_list*](./REPL.md#the-global_list-script) script.
 
 ## Adding an XML Tag
 
@@ -233,7 +239,7 @@ Type this:
 
         var el = doc.dom.createElement('myTag')
 
-If you look in your Redis system using the *global_list* script you'll see what's been created:
+If you look in your Redis system using the [*global_list*](./REPL.md#the-global_list-script) script you'll see what's been created:
         
         jsdbDom["demo","documentNode"]=1
         jsdbDom["demo","index","by_nodeName",1,"myTag",2]=""
@@ -1138,7 +1144,7 @@ to remove the *intermediateTag* Element (and its sub-tree of Nodes), you would a
         </myTag>
 
 
-If you look in your Redis system using the *global_list* script, you'll see that the removed Nodes are still in the Global - they've just
+If you look in your Redis system using the [*global_list*](./REPL.md#the-global_list-script) script, you'll see that the removed Nodes are still in the Global - they've just
 been detached from the DOM tree, so don't appear in the XML when listed.
 
 Just to prove this, you can get them back:
@@ -1170,7 +1176,7 @@ QEWD-JSdb storage (ie from the Redis Global):
         parTag.removeChild(imTag, true)
         console.log(doc.dom.output(2));
 
-If you look in your Redis system using the *global_list* script at the *jsdbDom* Global, you'll see that the detached Nodes have all been
+If you look in your Redis system using the [*global_list*](./REPL.md#the-global_list-script) script at the *jsdbDom* Global, you'll see that the detached Nodes have all been
 deleted, and now you won't be able to re-attach them.
 
 
@@ -1584,7 +1590,7 @@ After a second or two you should see the XML listing:
         </doc>
 
 
-Take a look in your Redis system using the *global_list* script and you'll find this DOM's data in a Global named *exampleDOM*
+Take a look in your Redis system using the [*global_list*](./REPL.md#the-global_list-script) script and you'll find this DOM's data in a Global named *exampleDOM*
 
 You can now access it and use the QEWD-JSdb DOM API methods on it within the Node.js REPL,
 in a REST API method or in an interactive message handler.  For example, in the REPL:
@@ -1664,7 +1670,7 @@ After a second or two you should see the XML listing:
           </foo>
         </xml>
 
-Take a look in your Redis system using the *global_list* script and you'll find this DOM's data in a Global named *exampleDOM2*
+Take a look in your Redis system using the [*global_list*](./REPL.md#the-global_list-script) script and you'll find this DOM's data in a Global named *exampleDOM2*
 
 You can now access it and use the QEWD-JSdb DOM API methods on it within the Node.js REPL,
 in a REST API method or in an interactive message handler.  For example, in the REPL:
@@ -1843,7 +1849,7 @@ and add it as *userData* to the *foo* Element, using a *key* of *test*:
 
         foo.setUserData('test', obj)
 
-Now take a look in your Redis system using the *global_list* script at the *userDataDom* Global that is storing the DOM's data.
+Now take a look in your Redis system using the [*global_list*](./REPL.md#the-global_list-script) script at the *userDataDom* Global that is storing the DOM's data.
 In Node 3 (representing the *foo* Element) you'll see this:
 
         userDataDom["node",3,"firstChild"]=4

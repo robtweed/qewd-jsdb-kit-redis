@@ -74,12 +74,14 @@ Try the following:
         var record = {a: 1, b: 2};
         doc.kvs.add(key, record);
 
-In YottaDB, you'll see this has created:
+If you take a look in your Redis system using the [*global_list*](./REPL.md#the-global_list-script) script, 
+you'll see that the following Global nodes have
+been created:
 
-        YDB>zwr ^jsdbKvs
+        $ node global_list jsdbKvs
 
-        ^jsdbKvs("demo","content",123,"a")=1
-        ^jsdbKvs("demo","content",123,"b")=2
+        jsdbKvs["demo","content",123,"a"]=1
+        jsdbKvs["demo","content",123,"b"]=2
 
 
 ## Editing records in the KVS
@@ -95,11 +97,11 @@ Try the following:
         record = {foo: 'bar'};
         doc.kvs.edit(123, record);
 
-In YottaDB, you'll see:
+In Redis, you'll see:
 
-        YDB> zwr ^jsdbKvs
+        $ node global_list jsdbKvs
 
-        ^jsdbKvs("demo","content",123,"foo")="bar"
+        jsdbKvs["demo","content",123,"foo"]="bar"
 
 If the key does not exist in the *KVS*, *false* is returned.
 
@@ -115,7 +117,11 @@ Try the following:
 
         doc.kvs.delete(123);
 
-In YottaDB, you'll see that the ^jsdbKvs Global is now empty.
+In Redis, you'll see that the jsdbKvs Global is now empty:
+
+        $ node global_list jsdbKvs
+
+        No Global with a name of jsdbKvs exists
 
 
 Specifying a key value that is not currently in use in the *KVS* will return *false*.
@@ -164,11 +170,11 @@ The *addIndex()* method specifies that any new records with a property of *town*
 automatically indexed.
 
 
-In YottaDB you'll see:
+In Redis you'll see:
 
-        YDB> zwr ^jsdbKvs
+        $ node global_list jsdbKvs
 
-        ^jsdbKvs("demo","indices","town","index")="true"
+        jsdbKvs["demo","indices","town","index"]="true"
 
 
 Now do this:
@@ -187,17 +193,17 @@ Now do this:
         console.log('added: ' + status);
 
 
-In YottaDB you'll now see the following:
+In Redis you'll now see the following:
 
-        YDB> zwr ^jsdbKvs
+        $ node global_list jsdbKvs
 
-        ^jsdbKvs("demo","content","key_1","name")="Rob"
-        ^jsdbKvs("demo","content","key_1","town")="Redhill"
-        ^jsdbKvs("demo","content","key_2","name")="Simon"
-        ^jsdbKvs("demo","content","key_2","town")="St Albans"
-        ^jsdbKvs("demo","index_by","town","Redhill","key_1")=""
-        ^jsdbKvs("demo","index_by","town","St Albans","key_2")=""
-        ^jsdbKvs("demo","indices","town","index")="true"
+        jsdbKvs["demo","content","key_1","name"]="Rob"
+        jsdbKvs["demo","content","key_1","town"]="Redhill"
+        jsdbKvs["demo","content","key_2","name"]="Simon"
+        jsdbKvs["demo","content","key_2","town"]="St Albans"
+        jsdbKvs["demo","index_by","town","Redhill","key_1"]=""
+        jsdbKvs["demo","index_by","town","St Albans","key_2"]=""
+        jsdbKvs["demo","indices","town","index"]="true"
 
 
 You can now find records in the *KVS* using the index, by using the *key_by_index()* method.
@@ -234,18 +240,18 @@ value is mixed case.  We could instead do the following:
         };
         status = doc.kvs.add("key_2", obj);
 
-In YottaDB you'll now see:
+In Redis you'll now see:
 
-        YDB> zwr ^jsdbKvs
+        $ node global_list jsdbKvs
 
-        ^jsdbKvs("demo","content","key_1","name")="Rob"
-        ^jsdbKvs("demo","content","key_1","town")="Redhill"
-        ^jsdbKvs("demo","content","key_2","name")="Simon"
-        ^jsdbKvs("demo","content","key_2","town")="St Albans"
-        ^jsdbKvs("demo","index_by","town","redhill","key_1")=""
-        ^jsdbKvs("demo","index_by","town","st albans","key_2")=""
-        ^jsdbKvs("demo","indices","town","index")="true"
-        ^jsdbKvs("demo","indices","town","transform")="toLowerCase"
+        jsdbKvs["demo","content","key_1","name"]="Rob"
+        jsdbKvs["demo","content","key_1","town"]="Redhill"
+        jsdbKvs["demo","content","key_2","name"]="Simon"
+        jsdbKvs["demo","content","key_2","town"]="St Albans"
+        jsdbKvs["demo","index_by","town","redhill","key_1"]=""
+        jsdbKvs["demo","index_by","town","st albans","key_2"]=""
+        jsdbKvs["demo","indices","town","index"]="true"
+        jsdbKvs["demo","indices","town","transform"]="toLowerCase"
 
 Notice how the town index records are in lower case, but the *content*
 records hold the original mixed-case values.
