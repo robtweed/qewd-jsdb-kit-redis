@@ -34,6 +34,11 @@ Alternatively, you can use the pre-built
 QEWD and an instance of Redis are pre-installed.  Note that this Container can even be re-configured to
 connect to other supported databases via a network connection.
 
+Note: versions of the Docker Container are also available for:
+
+- M1-based Apple Mac or Raspberry Pi running 64-bit Ubuntu Linux: *rtweed/qewd-redis-arm64*;
+- Raspberry Pi running the Raspbian or other 32-bit OS: *rtweed/qewd-redis-rpi*
+
 
 ## Native Installation of QEWD
 
@@ -363,6 +368,11 @@ first pull the latest version of the QEWD-Redis Container:
 
         docker pull rtweed/qewd-redis
 
+Note: if you're using:
+
+- a Ubuntu VM running on an M1-based Apple Mac or a Raspberry Pi running 64-bit Ubuntu Linux, pull *rtweed/qewd-redis-arm64* instead;
+- a Raspberry Pi running the Raspbian or other 32-bit OS, pull *rtweed/qewd-redis-rpi* instead
+
 
 ### Clone the *qewd-jsdb-kit-redis* Repository
 
@@ -386,6 +396,11 @@ you cloned this QEWD-Redis repository to a directory within the Docker Container
         docker run -it --rm --name qewd -p 8080:8080 -v /home/ubunbtu/qewd:/opt/qewd/mapped rtweed/qewd-redis
 
 Change the mapped volume path (ie */hme/ubuntu/qewd*) appropriately for your installation.
+
+Note: if you're using:
+
+- a Ubuntu VM running on an M1-based Apple Mac or a Raspberry Pi running 64-bit Ubuntu Linux, use *rtweed/qewd-redis-arm64* instead;
+- a Raspberry Pi running the Raspbian or other 32-bit OS, use *rtweed/qewd-redis-rpi* instead
 
 Once it starts up, it's ready to use QEWD.  It's pre-configured to correctly use the
 instance of Redis that is pre-installed within the Container.
