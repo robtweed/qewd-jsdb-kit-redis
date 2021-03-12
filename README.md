@@ -395,12 +395,13 @@ you cloned this QEWD-Redis repository to a directory within the Docker Container
 
         docker run -it --rm --name qewd -p 8080:8080 -v /home/ubunbtu/qewd:/opt/qewd/mapped rtweed/qewd-redis
 
-Change the mapped volume path (ie */hme/ubuntu/qewd*) appropriately for your installation.
+Change the mapped volume path (ie shown as */home/ubuntu/qewd* above) appropriately for your installation.
 
 Note: if you're using:
 
 - a Ubuntu VM running on an M1-based Apple Mac or a Raspberry Pi running 64-bit Ubuntu Linux, use *rtweed/qewd-redis-arm64* instead;
 - a Raspberry Pi running the Raspbian or other 32-bit OS, use *rtweed/qewd-redis-rpi* instead
+
 
 Once it starts up, it's ready to use QEWD.  It's pre-configured to correctly use the
 instance of Redis that is pre-installed within the Container.
@@ -462,10 +463,21 @@ If the *qewd-monitor* application works correctly, then you can be sure that QEW
 is working correctly and is ready for use.
 
 
+# Learn about QEWD-JSdb on your Redis database
+
+To find out more about how QEWD abstracts the Redis database as persistent 
+JSON objects, you can try out the 
+[QEWD-JSdb REPL-based tutorial](./REPL.md) after which you can also learn about
+the other NoSQL database models supported by QEWD-JSdb within Redis:
+
+- [Key/Object Store](./KVS.md)
+- [Persistent XML/JSON DOM](./DOM.md)
+
 
 # Start Developing
 
-Now that you have QEWD up and running on your Linux system, you can begin developing both
+Now that you have QEWD up and running on your Linux system, once you familiarise yourself with
+the QEWD-JSdb database (see above), you can begin developing both
 REST APIs and/or interactive/WebSocket applications.
 
 Your QEWD system can support both at once, and you can develop and run as many REST APIs as you
@@ -473,11 +485,14 @@ wish and as many simultaneous interactive applications as you wish.
 
 From this point onwards, there's no difference in how you develop QEWD applications,
 regardless of the Operating System you use, version of Node.js you use, or type of database
-you use (YottaDB, Cach&eacute;, IRIS or Redis).  The only difference will be in file paths.
+you use (YottaDB, Cach&eacute;, IRIS, Redis or BDB).  The only difference will be in file paths.  You could
+literally develop REST APIs or applications using, say, Redis, and they will run, without any application logic changes being necessary, using BDB, YottaDB or IRIS instead!
 
 So you can now use the following tutorials:
 
-- [this tutorial](https://github.com/robtweed/qewd-baseline/blob/master/INTERACTIVE.md)
+- to develop REST APIs, get started with [this document](./REST.md)
+
+- [the interactive applications tutorial](https://github.com/robtweed/qewd-baseline/blob/master/INTERACTIVE.md)
 explains how to develop interactive applications using the *qewd-client* browser module.
 This is a useful tutorial to take as it will help to explain the basics of how
 QEWD supports interactive, WebSocket message-based applications, and how you handle those messages
@@ -488,17 +503,6 @@ can can find out how to develop a modern interactive WebSocket application whose
 [*mg-webComponents*](https://github.com/robtweed/mg-webComponents) framework
 that has also been automatically installed in your QEWD system.
 [See this document, starting at the *mg-webCOmponents Framework* section](https://github.com/robtweed/qewd-microservices-examples/blob/master/WINDOWS-IRIS-2.md#the-mg-webcomponents-framework)
-
-
-- to develop REST APIs, get started with [this document](./REST.md)
-
-- to find out more about how QEWD abstracts the Redis database as persistent 
-JSON objects, you can try out the 
-[QEWD-JSdb REPL-based tutorial](./REPL.md) after which you can also learn about
-the other NoSQL database models supported by QEWD-JSdb within Redis:
-
-- [Key/Object Store](./KVS.md)
-- [Persistent XML/JSON DOM](./DOM.md)
 
 
 ## License
