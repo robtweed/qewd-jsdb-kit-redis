@@ -1,7 +1,7 @@
 # Installing QEWD with Redis on Ubuntu Linux
  
 Rob Tweed <rtweed@mgateway.com>  
-17 February 2021, M/Gateway Developments Ltd [http://www.mgateway.com](http://www.mgateway.com)  
+11 March 2021, M/Gateway Developments Ltd [http://www.mgateway.com](http://www.mgateway.com)  
 
 Twitter: @rtweed
 
@@ -43,7 +43,7 @@ Clone this repository to your Linux system.  For example, to clone it
 to the folder ~/qewd on your system:
 
         cd ~
-        git clone https://github.com/robtweed/qewd-starter-kit-redis qewd
+        git clone https://github.com/robtweed/qewd-jsdb-kit-redis qewd
 
 The instructions in this document will assume you've cloned it
 to the ~/qewd folder on your Linux system.  Adjust the paths in the examples appropriately
@@ -362,6 +362,19 @@ Assuming you have Docker installed (I would recommend running Docker on a Linux 
 first pull the latest version of the QEWD-Redis Container:
 
         docker pull rtweed/qewd-redis
+
+
+### Clone the *qewd-jsdb-kit-redis* Repository
+
+Clone this repository to your Linux system.  For example, to clone it
+to the folder ~/qewd on your system:
+
+        cd ~
+        git clone https://github.com/robtweed/qewd-jsdb-kit-redis qewd
+
+The instructions in this document will assume you've cloned it
+to the ~/qewd folder on your Linux system.  Adjust the paths in the examples appropriately
+if you cloned to a different folder on your Linux system.
 
 
 ### Starting the Container

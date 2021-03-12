@@ -1,4 +1,4 @@
-    var jsdb = require('./jsdb_redis');
+    var jsdb = require('./jsdb_shell');
     var doc = jsdb.use('exampleDom2');
     doc.enable_dom();
     doc.delete();
