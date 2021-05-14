@@ -20,7 +20,8 @@ var node = {
   global: 'cm'
 }
 
-var max = 1000000;
+var max = process.argv[2] || 100000;
+
 var d1 = new Date();
 var d1_ms = d1.getTime()
 console.log("d1: " + d1.toISOString());
